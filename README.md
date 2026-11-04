@@ -8,7 +8,7 @@
 
 SolarSpine segments individual solar filaments from **2048 × 2048 GONG H-alpha images**. It combines a trained YOLO26n-seg instance detector with a native-resolution residual U-Net that refines the geometry of each proposed filament without introducing ground-truth information at inference time.
 
-> **Release status (4 Nov 2026):** the frozen inference code and both SHA256-verified trained checkpoints are present in this private release repository (weights via Git LFS). An authenticated Colab QA run reproduced the accepted submission CSV byte-for-byte. Before public submission, complete third-party licensing review and verify anonymous Git clone, Git LFS download and a fresh jury execution without tokens.
+> **Release status (4 Nov 2026):** the frozen inference code and both SHA256-verified trained checkpoints are included through Git LFS. An authenticated Colab run reproduced the accepted submission CSV byte-for-byte. **Public anonymous clone, LFS access, and the public notebook run are not yet verified.** See [the publication checklist](PUBLISHING.md) before changing visibility.
 
 ## Method
 
@@ -86,6 +86,7 @@ Observed internal T4 replay prediction time: 371.916 seconds summed across stage
 | [`models/`](models/) | Authorized, hash-verified checkpoints (**included through Git LFS; SHA256 checked**) |
 | [`scripts/preflight_release.py`](scripts/preflight_release.py) | Source/weight integrity & release gate |
 | [`docs/EVIDENCE.md`](docs/EVIDENCE.md) | Reproducibility claims and limits |
+| [`docs/MODEL_PROVENANCE.md`](docs/MODEL_PROVENANCE.md) | Detector/refiner training provenance and limitations |
 | [`docs/RELEASE_CHECKLIST.md`](docs/RELEASE_CHECKLIST.md) | Remaining conditions before release |
 | [`tests/`](tests/) | CPU release-structure regression tests |
 
@@ -93,4 +94,4 @@ Observed internal T4 replay prediction time: 371.916 seconds summed across stage
 
 Both accepted model checkpoints are included via Git LFS, with hashes verified by `python scripts/preflight_release.py --strict`. The official competition TEST JPEGs are **not** redistributed; evaluators must obtain them from the competition source. While this repository is private, the owner has tested authenticated cloning and exact-CSV reproduction; **anonymous GitHub and LFS access remain unverified until public release**. Never include private Drive IDs, TEST labels, secret tokens, or experiment backups.
 
-Copyright 2026 Juan Felipe Orozco Cortés. The original project contains an MIT license for original code, but **third-party weights, Ultralytics and dataset licenses may impose additional conditions**. Read [`THIRD_PARTY_NOTICE.md`](THIRD_PARTY_NOTICE.md) before publishing. The public repository should be approved by its owner, not created by exposing the full private research repository.
+Copyright © 2026 Juan Felipe Orozco Cortés for original SolarSpine code. **The integrated YOLO-based open-source release is distributed under AGPL-3.0**, while [`LICENSE-MIT-ORIGINAL`](LICENSE-MIT-ORIGINAL) preserves the previous MIT grant for original source where applicable. Ultralytics and other third-party components remain subject to their own copyright/license terms, and competition data are **not** redistributed. See [`THIRD_PARTY_NOTICE.md`](THIRD_PARTY_NOTICE.md), [`docs/MODEL_PROVENANCE.md`](docs/MODEL_PROVENANCE.md), and [`PUBLISHING.md`](PUBLISHING.md). Do not construe this README as a license grant for competition datasets.

@@ -1,22 +1,36 @@
-# SolarSpine R2B — publication checklist (owner controlled)
+# SolarSpine R2B — public release gate (owner controlled)
 
-The private release repository is `topassky3/solarspine-r2b-final-2026`, **not** the original research repository `topassky3/solarspine-pq`. Do not publish the research repository or training data.
+**Only** `topassky3/solarspine-r2b-final-2026` is the release target. Keep `topassky3/solarspine-pq` private. Do not publish TEST data, GT masks, backup ZIPs, tokens, or unreviewed research experiments.
 
-## Completed
+## Verified before publication (4 Nov 2026)
 
-- Seven original source files and two exact checkpoints are SHA256 verified.
-- Both trained checkpoints are stored under Git LFS in the private release repository.
-- A clean Windows clone passed strict preflight and six structure tests.
-- The authenticated Colab reproduction notebook regenerated the accepted Kaggle CSV with SHA256 `c241bda04c1fefdab5fe1b6b6d90f4aeac23a02a2003f830c0b9b1b289d3294f`.
-- The public-facing notebook is `notebooks/SolarSpine_R2B_Jurado_T4.ipynb` and never reads a personal GitHub token.
+- Release HEAD before this licensing patch: `e49db08`.
+- Source and both trained checkpoints passed the strict SHA256 preflight; six tests passed on Windows.
+- Authenticated Colab T4 inference regenerated the accepted CSV byte-for-byte (`c241bda04c1fefdab5fe1b6b6d90f4aeac23a02a2003f830c0b9b1b289d3294f`).
+- `notebooks/SolarSpine_R2B_Jurado_T4.ipynb` is the public, token-free notebook, already in GitHub.
 
-## Remaining before final submission
+## Gate A — complete legal/provenance review BEFORE PUBLIC
 
-1. Review `THIRD_PARTY_NOTICE.md` and the provenance/licensing for the Ultralytics detector, weights, trained refiner and competition data. Do not treat the repository's MIT license as permission for third-party parts.
-2. Verify the public-facing notebook and README in a private clone (`python scripts/preflight_release.py --strict`, plus `python -m unittest discover -s tests -p "test_release_layout.py" -v`).
-3. Once the owner approves public release, use GitHub settings to make **only** `topassky3/solarspine-r2b-final-2026` public.
-4. In a fresh anonymous Colab/runtime, run the jury notebook. It must `git clone` and `git lfs pull` without GitHub credentials. Supply the official 180 TEST JPEGs separately (dataset is not included).
-5. Verify `SOLARSPINE_R2B_JURY_CSV_EXACT_MATCH` again. Preserve an unmodified reproducibility log and SHA256 evidence.
-6. Review the report PDF and complete the organizer submission form manually, including the public Git URL and exact accepted CSV. The notebook does not submit automatically.
+1. Read `THIRD_PARTY_NOTICE.md` and `docs/MODEL_PROVENANCE.md`.
+2. Affirmatively choose an AGPL-3.0-integrated release and install the authentic full `LICENSE` text using `scripts/Install-AGPLLicense.ps1`. The script saves the historical original MIT grant in `LICENSE-MIT-ORIGINAL`.
+3. Confirm with the competition organizer if necessary that redistribution of the trained weights derived from competition data is permitted. No dataset images are distributed.
+4. Check that the exact source material and weight bytes, rather than only their hashes, are present in Git LFS; review *Git history* for secret leaks before publishing (visibility changes expose public Git history).
+5. Address training-code obligations: the verified public notebook fully reproduces **inference**, not the training from scratch; competition winners must provide training code. See `docs/MODEL_PROVENANCE.md`.
+6. Run `python scripts/preflight_release.py --strict`, six regression tests, and `python scripts/check_publication_ready.py`.
+7. Review `git diff` and `git diff --cached` before committing and pushing.
 
-This checklist distinguishes **authenticated scientific reproducibility (passed)** from **anonymous public access and jury release (pending)**.
+## Gate B — public access (ONLY AFTER gate A)
+
+1. Owner changes visibility of **release repo only** on GitHub (Settings → General → Danger Zone → Change repository visibility → Public). Do not change the research repo.
+2. In **a new clean environment with no GitHub token**, run `git clone https://github.com/topassky3/solarspine-r2b-final-2026.git`, then `git lfs pull` and the strict preflight.
+3. Execute public jury notebook with the official 180 TEST JPEGs, and verify `SOLARSPINE_R2B_JURY_CSV_EXACT_MATCH` with the hash above.
+4. Audit visible pages: GitHub repo, LFS download as anonymous user, README, licensing, source and download link. Keep the evidence logs.
+
+## Gate C — final competition submission
+
+1. Validate four-page technical report (Overleaf template) and make sure it correctly describes the frozen accepted method.
+2. Complete the organizers' Google Form with report PDF and genuinely public GitHub URL by the applicable deadline. The notebook never submits the form or Kaggle submission.
+3. If applicable, share public competition code on its Kaggle forum/notebook as provided by the competition's public-code-sharing rule, without uploading data or credentials.
+
+Official competition rules: https://www.kaggle.com/competitions/filament-segmentation-2026/rules
+Official overview: https://www.kaggle.com/competitions/filament-segmentation-2026/overview
