@@ -1,0 +1,30 @@
+{
+  "GT_only_training_target": true,
+  "Kaggle_TEST_unused": true,
+  "architecture": "NativeROIRefiner",
+  "batch_size": 8,
+  "checkpoint": "each_completed_epoch_plus_last_and_best",
+  "cuda_amp": true,
+  "do_not_use_fold4_for_selection": true,
+  "experiment": "E10-01-A11R2A-FULL-NATIVE-OOF-REFINER-T4-TRAIN",
+  "loss": "R1Y_masked_loss_0.5_BCE_0.5_Dice",
+  "lr": 0.0003,
+  "max_epochs": 8,
+  "max_wall_minutes": 75,
+  "no_aug_fixed_oof_tile_source": true,
+  "patch_index_sha256": "19eab7338706df1c55f7eba3513a1000a645ec147c13dc961c7d2ed94fea73d4",
+  "protocol_sha256": "6d5eadc8cecf3f96c71152f7458a28e8f8d243580668115f1214ab1380c87a19",
+  "seed": 20261021,
+  "select_best": "FULL_870_val_tile_mean_loss",
+  "source_git_commit": "e9b0528d9e6893cd1332bbe8bbaaf0366f4894c7",
+  "source_only_channels": [
+    "native_Halpha",
+    "exclusive_teacher_mask",
+    "neighbor_union"
+  ],
+  "stage_summary_sha256": "1884d320a70124ae3cb126b92a07627ab8d7e3542a8131c15cd971639dbf94c7",
+  "teacher_best_sha256": "e2900a6634e4c677edf19410cb9df74e1f041e02b836fa4938d2f89cd48cf1f8",
+  "train_tiles": 2955,
+  "val_tiles": 870,
+  "weight_decay": 0.0001
+}
