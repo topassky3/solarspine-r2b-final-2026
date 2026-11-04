@@ -8,7 +8,7 @@
 
 SolarSpine segments individual solar filaments from **2048 × 2048 GONG H-alpha images**. It combines a trained YOLO26n-seg instance detector with a native-resolution residual U-Net that refines the geometry of each proposed filament without introducing ground-truth information at inference time.
 
-> **Release status:** pre-publication package. This repository snapshot contains the complete frozen inference code, but trained checkpoint files must be added and license conditions confirmed before public release. Do not present it as a finished jury repository until `python scripts/preflight_release.py --strict` passes.
+> **Release status (4 Nov 2026):** the frozen inference code and both SHA256-verified trained checkpoints are present in this private release repository (weights via Git LFS). An authenticated Colab QA run reproduced the accepted submission CSV byte-for-byte. Before public submission, complete third-party licensing review and verify anonymous Git clone, Git LFS download and a fresh jury execution without tokens.
 
 ## Method
 
@@ -53,9 +53,9 @@ A new jury-facing full inference run on Tesla T4 regenerated both stage outputs 
 ## Get started
 
 1. Obtain the official competition **TEST JPEGs** from the organizers, not from this repository.
-2. Obtain the two accepted model checkpoint files from the authorized release of this repo (required locations below).
+2. Clone this repository and download its two SHA256-locked trained checkpoints using `git lfs pull`; no separate model download or training is needed.
 3. Use the recorded Tesla T4 / CUDA 13.0 runtime and match dependency versions.
-4. Open [SolarSpine_R2B_Jurado_T4.ipynb](notebooks/SolarSpine_R2B_Jurado_T4.ipynb) on Colab, enter the public repository URL and official image location, then run all cells. The notebook clones this repo; **no personal Drive, private checkout or separate code ZIP is required**.
+4. Open [SolarSpine_R2B_Jurado_T4.ipynb](notebooks/SolarSpine_R2B_Jurado_T4.ipynb) on Colab with a matching Tesla T4 runtime, supply the official TEST JPEGs at the documented `IMAGES` location, and run all cells. Once the repository is public, the notebook clones it anonymously, downloads weights with Git LFS and verifies the produced CSV. **No personal Drive, private checkout or separate code ZIP is required**, but the competition TEST images must be supplied by the evaluator.
 
 Command-line equivalent from the repository root:
 
@@ -83,7 +83,7 @@ Observed internal T4 replay prediction time: 371.916 seconds summed across stage
 | [`notebooks/SolarSpine_R2B_Jurado_T4.ipynb`](notebooks/SolarSpine_R2B_Jurado_T4.ipynb) | Jury notebook, clones this public repo directly |
 | [`delivery/r2b/run_inference.py`](delivery/r2b/run_inference.py) | Standalone two-stage runner |
 | [`delivery/r2b/source/`](delivery/r2b/source) | Frozen model/mask source and SHA lock |
-| [`models/`](models/) | Authorized, hash-verified checkpoints (**not yet in this candidate**) |
+| [`models/`](models/) | Authorized, hash-verified checkpoints (**included through Git LFS; SHA256 checked**) |
 | [`scripts/preflight_release.py`](scripts/preflight_release.py) | Source/weight integrity & release gate |
 | [`docs/EVIDENCE.md`](docs/EVIDENCE.md) | Reproducibility claims and limits |
 | [`docs/RELEASE_CHECKLIST.md`](docs/RELEASE_CHECKLIST.md) | Remaining conditions before release |
@@ -91,6 +91,6 @@ Observed internal T4 replay prediction time: 371.916 seconds summed across stage
 
 ## Availability, provenance and licensing
 
-Model weights and official JPEGs are not included in this **pre-publication package**. For the actual final competition repository, organizers require both model checkpoints accessible from the repo, without access requests, and the notebook to load them without training. Git LFS is preconfigured for `.pt` files; the repo owner must complete checkpoint upload and confirm downloads from an unauthenticated account. Never include private Drive IDs, TEST labels, secret tokens, or experiment backups.
+Both accepted model checkpoints are included via Git LFS, with hashes verified by `python scripts/preflight_release.py --strict`. The official competition TEST JPEGs are **not** redistributed; evaluators must obtain them from the competition source. While this repository is private, the owner has tested authenticated cloning and exact-CSV reproduction; **anonymous GitHub and LFS access remain unverified until public release**. Never include private Drive IDs, TEST labels, secret tokens, or experiment backups.
 
 Copyright 2026 Juan Felipe Orozco Cortés. The original project contains an MIT license for original code, but **third-party weights, Ultralytics and dataset licenses may impose additional conditions**. Read [`THIRD_PARTY_NOTICE.md`](THIRD_PARTY_NOTICE.md) before publishing. The public repository should be approved by its owner, not created by exposing the full private research repository.

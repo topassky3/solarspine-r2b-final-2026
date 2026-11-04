@@ -1,30 +1,22 @@
-# Publication procedure (owner-controlled, not executed)
+# SolarSpine R2B — publication checklist (owner controlled)
 
-**Never publish the private research repo `topassky3/solarspine-pq` directly.** Create a new, minimal repository from this directory once models/licenses are approved.
+The private release repository is `topassky3/solarspine-r2b-final-2026`, **not** the original research repository `topassky3/solarspine-pq`. Do not publish the research repository or training data.
 
-## Before public visibility
+## Completed
 
-1. Review `THIRD_PARTY_NOTICE.md` and approved terms for pretrained weights and official competition images.
-2. Copy exactly the two SHA256-locked checkpoint files into `models/detector/best.pt` and `models/refiner/best.pt`. Do not use alternate epochs.
-3. Install Git LFS and run `git lfs install`, then confirm `git check-attr filter -- models/detector/best.pt` returns `lfs` (similarly for refiner).
-4. Run `python scripts/preflight_release.py --strict`; require `status=PASS`.
-5. Replace the blank `REPO_URL` in `notebooks/SolarSpine_R2B_Jurado_T4.ipynb` with the actual future public URL. The notebook can then clone anonymously.
-6. Create a **new private** GitHub repository, commit only this directory, and verify its file tree (exclude CSV, backups, tokens and TEST images).
-7. Only with explicit approval, change repo visibility to public; test `git clone`, LFS pull and Colab execution as an anonymous outsider.
-8. Submit **the public Git URL**, final template-verified report PDF and exact Kaggle CSV through the final form.
+- Seven original source files and two exact checkpoints are SHA256 verified.
+- Both trained checkpoints are stored under Git LFS in the private release repository.
+- A clean Windows clone passed strict preflight and six structure tests.
+- The authenticated Colab reproduction notebook regenerated the accepted Kaggle CSV with SHA256 `c241bda04c1fefdab5fe1b6b6d90f4aeac23a02a2003f830c0b9b1b289d3294f`.
+- The public-facing notebook is `notebooks/SolarSpine_R2B_Jurado_T4.ipynb` and never reads a personal GitHub token.
 
-## Optional Windows PowerShell commands (after the preceding checks)
+## Remaining before final submission
 
-```powershell
-# Inside the extracted folder, AFTER the two checkpoint files are added and approved.
-python scripts/preflight_release.py --strict
-git init -b main
-git lfs install
-git add .
-git status --short
-git commit -m "Reproducible SolarSpine R2B jury package"
-# Requires GitHub CLI authentication. Creates PRIVATE repo, not publicly accessible yet.
-gh repo create topassky3/solarspine-r2b-final-2026 --private --source . --remote origin --push
-```
+1. Review `THIRD_PARTY_NOTICE.md` and the provenance/licensing for the Ultralytics detector, weights, trained refiner and competition data. Do not treat the repository's MIT license as permission for third-party parts.
+2. Verify the public-facing notebook and README in a private clone (`python scripts/preflight_release.py --strict`, plus `python -m unittest discover -s tests -p "test_release_layout.py" -v`).
+3. Once the owner approves public release, use GitHub settings to make **only** `topassky3/solarspine-r2b-final-2026` public.
+4. In a fresh anonymous Colab/runtime, run the jury notebook. It must `git clone` and `git lfs pull` without GitHub credentials. Supply the official 180 TEST JPEGs separately (dataset is not included).
+5. Verify `SOLARSPINE_R2B_JURY_CSV_EXACT_MATCH` again. Preserve an unmodified reproducibility log and SHA256 evidence.
+6. Review the report PDF and complete the organizer submission form manually, including the public Git URL and exact accepted CSV. The notebook does not submit automatically.
 
-Do not make it public or submit the Google form until all release gates are green. A final public URL is not yet known to exist.
+This checklist distinguishes **authenticated scientific reproducibility (passed)** from **anonymous public access and jury release (pending)**.
