@@ -1,0 +1,38 @@
+# Keep source, notebook, and exactly the two authorized model checkpoints.
+__pycache__/
+*.py[cod]
+*.so
+.ipynb_checkpoints/
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+kaggle.json
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.log
+# Never commit competition datasets/labels or internal result bundles.
+data/
+datasets/
+annotations/
+training_data/
+results/
+runs/
+outputs/
+checkpoints/
+*.csv
+*.zip
+*.tar.gz
+*.safetensors
+*.ckpt
+*.pth
+*.onnx
+# Only the two accepted model files below may be committed via reviewed Git LFS.
+*.pt
+!models/detector/best.pt
+!models/refiner/best.pt

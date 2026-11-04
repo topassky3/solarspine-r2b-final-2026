@@ -1,0 +1,41 @@
+{
+  "files": {
+    "src/solarspine/evaluation/e10_01_a11r1w_native_roi_coverage_gate.py": {
+      "bytes": 13673,
+      "git_blob_sha": "c262e92a213d78505de3d6260628a61e748a8cc2",
+      "sha256": "24c682eb2fe19e661064d574087ca614439c36c2f0b2f6d49c807e9b36621937"
+    },
+    "src/solarspine/evaluation/e10_01_a11r2b_fold4_native_strict_pq.py": {
+      "bytes": 19563,
+      "git_blob_sha": "ad6a0346b19b4e8aecd8cfc4a19ef802ae6338d0",
+      "sha256": "cf987ec4588bcd25933ce621cb7f8e07f5110f358ed269f3d86e2b961dbbb6b3"
+    },
+    "src/solarspine/evaluation/e10_01_a4_fold4_native_pq.py": {
+      "bytes": 21145,
+      "git_blob_sha": "1db084c1bb25d0a4a500d39f0ec691944f127da0",
+      "sha256": "4f4ac8c365d0e2e38042e38f633e88b2649592759bf92a82f1488fa08406f3b4"
+    },
+    "src/solarspine/models/e10_01_native_roi_refiner.py": {
+      "bytes": 7349,
+      "git_blob_sha": "bad110248efd42e7b36502fe98ff2ad76318d5de",
+      "sha256": "54780c2f7757d054d6eca743045310c6a835148ee472145b810156b9da09ce6b"
+    },
+    "src/solarspine/submission/e10_01_a11r2c_test_submission.py": {
+      "bytes": 15087,
+      "git_blob_sha": "aab4a45aae8ed1ed4186839c80a5d774fcc26993",
+      "sha256": "5f7f3962d9aee8e3cb5fe98bccb2b3be6a681061d81988646edc52e646dce554"
+    },
+    "src/solarspine/submission/e10_01_a6_test_submission.py": {
+      "bytes": 15808,
+      "git_blob_sha": "01a0e21bd39a5bfabdca205227f411caa4a94d1b",
+      "sha256": "5c11757a838ff1ca131f6cd6dff4440e32d6f4dfd58ed01f1755a5f3bd8878cb"
+    },
+    "src/solarspine/training/e10_01_a11r1x_roi_patch_index.py": {
+      "bytes": 18938,
+      "git_blob_sha": "2420b6810fe88542673593e84c8897a363c5bc8e",
+      "sha256": "22525f65993a578a0057f698ac5a0334aa214017aa712391b256d3e776bab1bd"
+    }
+  },
+  "schema": "R2B-accepted-production-sources-v1",
+  "source_commit": "0c984687303f3819d1a4bc7a9d5a7727b7e6b2c0"
+}
