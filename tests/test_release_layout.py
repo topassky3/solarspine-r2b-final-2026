@@ -15,10 +15,10 @@ class ReleaseLayoutTests(unittest.TestCase):
   self.assertNotIn('PACKAGE_ZIP',nb)
   self.assertNotIn('MyDrive/SolarSpine',nb)
   self.assertIn('git',nb)
- def test_release_gate_prepublication(self):
-  s=p.verify(False)
+ def test_release_gate_with_verified_models(self):
+  s=p.verify(True)
   self.assertEqual(s['status'],'PASS')
-  self.assertFalse(s['release_ready'])
+  self.assertTrue(s['release_ready'])
  def test_two_checkpoint_locks(self):
   self.assertEqual(set(p.EXPECTED),{'models/detector/best.pt','models/refiner/best.pt'})
  def test_runner_syntax(self):
